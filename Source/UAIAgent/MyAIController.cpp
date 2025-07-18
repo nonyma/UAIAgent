@@ -19,26 +19,31 @@ void AMyAIController::Tick(float DeltaSeconds)
 
     if (Timer > 2.0f)
     {
-        MoveToTarget();
-        LookAround();
+        UpdateMovement();
+        UpdateRotation();
         Timer = 0.0f;
     }
 }
 
-void AMyAIController::MoveToTarget()
+void AMyAIController::UpdateMovement()
 {
     MoveToLocation(RandomLocation);
 }
 
-void AMyAIController::LookAround()
+void AMyAIController::UpdateRotation()
 {
     APawn* ControlledPawn = GetPawn();
     if (ControlledPawn)
     {
-        FRotator NewRotation = UKismetMathLibrary::FindLookAtRotation(
+        FRotator NewRotation = CalculateLookAtRotation(
             ControlledPawn->GetActorLocation(),
             RandomLocation
         );
         ControlledPawn->SetActorRotation(NewRotation);
     }
+}
+
+FRotator AMyAIController::CalculateLookAtRotation(const FVector& From, const FVector& To)
+{
+    return UKismetMathLibrary::FindLookAtRotation(From, To);
 }

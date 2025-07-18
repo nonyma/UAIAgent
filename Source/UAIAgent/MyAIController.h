@@ -16,8 +16,14 @@ protected:
     virtual void Tick(float DeltaSeconds) override;
 
 private:
-    void MoveToTarget();
-    void LookAround();
+    /** Move the controlled pawn toward the random location. */
+    void UpdateMovement();
+
+    /** Rotate the pawn to face the random location. */
+    void UpdateRotation();
+
+    /** Helper used to calculate a look-at rotation. Extracted for easier testing. */
+    static FRotator CalculateLookAtRotation(const FVector& From, const FVector& To);
 
     FVector RandomLocation;
     float Timer;
