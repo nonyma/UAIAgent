@@ -1,0 +1,36 @@
+# Unreal Engine 기본 빌드 산출물
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# IDE 관련 파일들
+.vs/
+*.VC.db
+*.sdf
+*.opensdf
+*.suo
+*.user
+
+# 로그 및 임시파일
+*.log
+*.tmp
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# 빌드 도구 출력물
+*.pdb
+*.obj
+*.exe
+
+# Rider / VSCode 등 에디터
+.idea/
+.vscode/
+
+# Crash 보고 및 백업
+*.dmp
+*.backup
