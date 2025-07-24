@@ -12,7 +12,7 @@ class UTextBlock;
 class UVerticalBox;
 
 /**\n * UI widget for NPC reaction simulation.\n */
-UCLASS()
+UCLASS(Blueprintable)
 class UAIAGENT_API UReactionSimulatorWidget : public UUserWidget
 {
     GENERATED_BODY()
