@@ -1,0 +1,68 @@
+The error message indicates that the build failed because no target name was specified on the command line. This generally means you attempted to build your Unreal project without providing a valid target (e.g., Editor, Game, or a specific module).
+
+### Common Causes:
+- Running `UnrealBuildTool` directly without specifying the target.
+- Incorrect command line syntax.
+- Missing or misconfigured project files.
+
+### Typical Solution:
+Ensure you're specifying the correct target and platform when building your project.
+
+### How to fix it:
+
+#### 1. Use UnrealBuildTool with a proper command:
+Instead of running:
+
+```bash
+UnrealBuildTool
+```
+
+You should specify the target, platform, and configuration:
+
+```bash
+UnrealBuildTool -Target="UAIAGentEditor" Win64 Development -Project="Path/To/Your/Project/UAIAGent.uproject"
+```
+
+OR, using the command in the Unreal Engine Editor:
+
+```bash
+"Path/To/UE4Editor-Cmd.exe" "Path/To/Your/Project/UAIAGent.uproject" -run=UEBuildCookRun -target=UAIAGentEditor -TargetPlatform=Win64 -Configuration=Development
+```
+
+#### 2. Building from Visual Studio (recommended):
+
+- Right-click your project/solution and select **Build** or **Rebuild**.
+- Ensure your startup project is set correctly.
+
+#### 3. Using Unreal Editor:
+
+Open your project in Unreal Editor, then:
+- File > Package Project > SQL based on your target platform.
+
+---
+
+### Additional Tips:
+- Check your project's `/Source` directory for correct module definitions.
+- If you use command line, always specify `-Target=""`.
+
+### Example of a command to build the game target:
+
+```bash
+"Path/To/UE4Editor-Cmd.exe" "Path/To/Your/Project/UAIAGent.uproject" -run=UnrealBuildTool -Target=UAIAGent -Platform=Win64 -Configuration=Development
+```
+
+---
+
+### Final note:
+If you're testing or building in command line, always check the official UE documentation for your specific engine version, as commands may vary slightly.
+
+---
+
+### Summary:
+- Always specify a target name.
+- Use the correct command syntax.
+- Prefer building via Visual Studio or UE Editor for simplicity.
+
+---
+
+Let me know if you'd like me to review your build scripts or project setup!
