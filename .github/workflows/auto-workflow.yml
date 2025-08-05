@@ -1,0 +1,20 @@
+name: AI 자동 워크플로
+
+on:
+  push:
+    paths:
+      - 'codex_fix.txt'
+      - 'build_request.txt'
+
+jobs:
+  ai_automation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Codex 개선 요청 및 빌드 분기 실행
+        run: |
+          python .github/scripts/ai_auto_workflow.py
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          BUILD_SERVER_URL: ${{ secrets.BUILD_SERVER_URL }}

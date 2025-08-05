@@ -1,8 +1,66 @@
-Result: Failed (OtherCompilationError)
- 
---- Full context from build log --- 
-Log file: C:\Users\banbe\AppData\Local\UnrealBuildTool\Log.txt
-No target name was specified on the command-line.
+The error message:
 
-Result: Failed (OtherCompilationError)
-Total execution time: 0.53 seconds
+```
+No target name was specified on the command-line.
+```
+
+indicates that you're attempting to build the Unreal project `UAIAGent` without specifying a target configuration, such as `Development`, `Debug`, etc., or without specifying the correct command to build the project.
+
+### How to Fix
+
+#### 1. **Use UnrealEditor or UnrealBuildTool with the correct target**
+
+You need to specify your target explicitly when building via command line.
+
+**Example build commands:**
+
+```bash
+# To build the project using UnrealEditor:
+"[PathToUnrealEditor]\UnrealEditor.exe" "PathToYourProject\UAIAGent.uproject" -Target=UAIAGentEditor -TargetPlatform=Win64 -build
+
+# Or use UnrealBuildTool (UBT) explicitly:
+"C:\Path\To\UnrealBuildTool.exe" -Target=UAIAGentEditor Win64 Development -Project="C:\Path\To\Your\Project\UAIAGent.uproject"
+```
+
+Replace `[PathToUnrealEditor]`, `PathToYourProject`, and the target names as appropriate.
+
+---
+
+#### 2. **If building from within Visual Studio**
+
+Open the generated Visual Studio solution (`UAIAGent.sln`) inside the `UAIAGent` project folder.
+
+- Set the build configuration to `Development Editor`.
+- Set the platform to `Win64`.
+- Build or run your project from Visual Studio.
+
+---
+
+#### 3. **Check Your Build Command or Batch Script**
+
+If you're running a batch script or command line, ensure it includes the target:
+
+```bash
+RunUAT.bat BuildCookRun -project="Path\To\UAIAGent.uproject" -noP4 -build -target=UAIAGentEditor -platform=Win64 -client
+```
+
+---
+
+### Summary
+
+- You *must* specify the target (e.g., `UAIAGentEditor`) when building.
+- Use Unreal’s build tools with correct parameters or build directly in Visual Studio.
+- Ensure your command looks like:
+
+```bash
+"Path\To\UnrealBuildTool.exe" -Target=UAIAGentEditor Win64 Development -Project="Path\To\UAIAGent.uproject"
+```
+
+### Additional Tips:
+- If you haven't created a custom target, the default is usually `UAIAGentEditor` or `UAIAGent`.
+
+---
+
+### Final note: 
+
+If you'd like, share the exact command you're executing or your build script, and I can help craft the precise fix!
