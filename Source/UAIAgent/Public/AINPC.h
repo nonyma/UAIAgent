@@ -24,8 +24,8 @@ public:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "NPC")
     EReactionType LastReaction = EReactionType::None;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "NPC")
-    TMap<TWeakObjectPtr<AINPC>, FRelationshipData> RelationshipMap;
+    UPROPERTY(EditAnywhere, Category = "NPC")
+    TMap<AINPC*, FRelationshipData> RelationshipMap;
 
     UFUNCTION(BlueprintCallable, Category = "NPC")
     virtual void HandleSituation(const FString& SituationTag, AINPC* SourceNPC);
