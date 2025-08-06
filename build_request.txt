@@ -1,0 +1,6 @@
+{
+  "project_path": "D:/Work/UAIAgent",
+  "project_name": "UAIAgent",
+  "branch_name": "main",
+  "repository": "UAIAgent"
+}
