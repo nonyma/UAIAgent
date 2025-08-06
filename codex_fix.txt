@@ -1,8 +1,0 @@
-Result: Failed (OtherCompilationError)
- 
---- Full context from build log --- 
-Log file: C:\Users\banbe\AppData\Local\UnrealBuildTool\Log.txt
-No target name was specified on the command-line.
-
-Result: Failed (OtherCompilationError)
-Total execution time: 0.60 seconds

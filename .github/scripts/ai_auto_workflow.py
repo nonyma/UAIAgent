@@ -1,19 +1,28 @@
 import os
 import requests
 import shutil
+import json
 from datetime import datetime
 from openai import OpenAI
 
-def codex_fix():
+def codex_fix(build_request_json):
+    # build_request_json은 이미 파싱된 dict
+    repo = build_request_json.get("repository", "UNKNOWN_REPO")
+    branch = build_request_json.get("branch_name", "UNKNOWN_BRANCH")
+    project = build_request_json.get("project_name", "UNKNOWN_PROJECT")
+    context_info = f"repository: {repo}\nbranch: {branch}\nproject: {project}\n"
+
     with open("codex_prompt.txt", "r", encoding="utf-8") as f:
         prompt_template = f.read()
-    # 컨텍스트 파일 이름만 명시 (실제 로그/코드는 codex가 직접 파일을 읽어 참고)
-    context_file_name = "codex_fix.txt"
+    with open("codex_fix.txt", "r", encoding="utf-8") as f:
+        error_log = f.read()
+
     full_prompt = (
         f"{prompt_template}\n"
-        f"참고할 컨텍스트 파일 이름: {context_file_name}\n"
+        f"{context_info}"
+        f"\n빌드 에러 로그:\n{error_log}"
     )
-    # Codex에게 full_prompt만 전달
+    # Codex에 요청
     client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
     response = client.chat.completions.create(
         model="gpt-4.1-nano",
@@ -29,24 +38,20 @@ def codex_fix():
 def build_request():
     with open("build_request.txt", "r", encoding="utf-8") as f:
         req_data = f.read()
-    # build_request.txt 예: {"project_path": "...", "project_name": "...", "branch_name": "..."}
-    import json
     try:
         req_json = json.loads(req_data)
     except Exception as e:
         print(f"build_request.txt 파싱 오류: {e}")
         return
+
     url = os.environ["BUILD_SERVER_URL"]
     resp = requests.post(url, json=req_json)
     print(f"빌드 서버 응답: {resp.status_code} - {resp.text}")
 
-    # 성공적으로 2xx 응답 받았을 때만 아카이브
+    # 빌드 요청이 성공적으로 끝났다면, 아카이브
     if 200 <= resp.status_code < 300:
-        # archive 폴더 준비
         archive_dir = "build_requests_archive"
         os.makedirs(archive_dir, exist_ok=True)
-
-        # 타임스탬프 추가
         now = datetime.now().strftime("%Y%m%d_%H%M%S")
         archive_file = os.path.join(archive_dir, f"build_request_{now}.txt")
         shutil.move("build_request.txt", archive_file)
@@ -55,7 +60,10 @@ def build_request():
         print("빌드 요청 실패: build_request.txt는 남겨둠")
 
 if __name__ == "__main__":
-    if os.path.exists("codex_fix.txt"):
-        codex_fix()
     if os.path.exists("build_request.txt"):
-        build_request()
+        # codex_fix() 먼저 실행(필요시)
+        with open("build_request.txt", "r", encoding="utf-8") as f:
+            build_request_json = json.load(f)
+        if os.path.exists("codex_fix.txt"):
+            codex_fix(build_request_json)
+        build_request()  # 마지막에 요청/아카이브
