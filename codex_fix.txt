@@ -1,9 +1,3 @@
-  Running Internal UnrealHeaderTool C:\WorkSpace\UAIAgent\UAIAgent.uproject C:\WorkSpace\UAIAgent\Intermediate\Build\Win64\UAIAgentEditor\Development\UAIAgentEditor.uhtmanifest -WarningsAsErrors -installed
-C:\WorkSpace\UAIAgent\Source\UAIAgent\Public\AINPC.h(27): Error: Type 'TMap<TWeakObjectPtr<AINPC>,FRelationshipData>' is not supported by blueprint. Class: AINPC Property: RelationshipMap
-C:\WorkSpace\UAIAgent\Source\UAIAgent\Public\AMafiaNPC.h(15): Error: Type 'TMap<TWeakObjectPtr<AINPC>,FString>' is not supported by blueprint. Class: AMafiaNPC Property: PredictedRoleMap
-Result: Failed (OtherCompilationError)
- 
---- Full context from build log --- 
 Log file: C:\Users\banbe\AppData\Local\UnrealBuildTool\Log.txt
 Using 'git status' to determine working set for adaptive non-unity build (C:\WorkSpace\UAIAgent).
 Creating makefile for UAIAgentEditor (no existing makefile)
