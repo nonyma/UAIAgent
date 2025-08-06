@@ -3,7 +3,7 @@ Binaries/
 DerivedDataCache/
 Intermediate/
 Saved/
-/codex_archive/
+/build_request_archive//
 
 # IDE 관련 파일들
 .vs/

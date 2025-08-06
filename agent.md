@@ -63,6 +63,13 @@ note: 신규 AI Agent 자동화 빌드 요청
 
 > 이 문서는 Codex Agent 자동화의 유일한 공식 명세서임  
 > 모든 파이프라인, LLM, 빌드 스크립트는 본 명세를 우선 참조함
+
+## ue compile flow
+codex의 작업으로 새 코드가 반영 되었을 경우
+- codex_fix.txt 와 codex_fix_fail.txt 파일 제거
+- build_request.txt 내용 중 branch_name 값을 작업 branch 이름으로 갱신
+- build_request.txt 내용 중 should_build 값(true or false)을 사용자의 명시적 빌드 테스트 요청 유무로 갱신
+
 """
 
 
