@@ -3,7 +3,6 @@ name: AI 자동 워크플로
 on:
   push:
     paths:
-      - 'codex_fix.txt'
       - 'build_request.txt'
 
 jobs:
