@@ -65,6 +65,4 @@ note: 신규 AI Agent 자동화 빌드 요청
 > 모든 파이프라인, LLM, 빌드 스크립트는 본 명세를 우선 참조함
 """
 
-with open("/mnt/data/agent.md", "w", encoding="utf-8") as f:
-    f.write(md_content.strip())
 
