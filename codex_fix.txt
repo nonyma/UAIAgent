@@ -14,4 +14,4 @@ C:\WorkSpace\UAIAgent\Source\UAIAgent\Public\AINPC.h(27): Error: Type 'TMap<TWea
 Total of 0 written
 
 Result: Failed (OtherCompilationError)
-Total execution time: 4.56 seconds
+Total execution time: 4.19 seconds
