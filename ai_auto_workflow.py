@@ -2,6 +2,12 @@ import os
 import requests
 import json
 
+def is_true(val):
+    if val is True or val == 1:
+        return True
+    if isinstance(val, str) and val.lower() in ("true", "1"):
+        return True
+    return False
 
 def build_request():
     with open("build_request.txt", "r", encoding="utf-8") as f:
@@ -12,7 +18,7 @@ def build_request():
             return False
 
     should_build = str(req_json.get("should_build", "")).lower()
-    if should_build not in ("true", "1"):
+    if not is_true(should_build):
         print("should_build 값이 true/1이 아니므로 빌드 요청을 건너뜀")
         return False
 
