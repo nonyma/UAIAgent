@@ -1,7 +1,0 @@
-{
-  "project_path": "C:\\WorkSpace\\UAIAgent",
-  "project_name": "UAIAgent",
-  "branch_name": "main",
-  "repository": "UAIAgent",
-  "should_build": "true"
-}
