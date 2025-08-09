@@ -3,7 +3,7 @@
   "project_name": "UAIAgent",
   "branch_name": "main",
   "repository": "UAIAgent",
-  "should_build": false,
+  "should_build": true,
   "compile_error": "",
   "user": "codex-shell"
 }
