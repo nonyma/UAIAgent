@@ -15,7 +15,7 @@ AINPC* AMafiaNPC::PickBluffTarget()
     float BestScore = -1.f;
     for (const auto& Elem : RelationshipMap)
     {
-        AINPC* Candidate = Elem.Key.Get();
+        AINPC* Candidate = Elem.Key;
         if (!Candidate) continue;
         const FRelationshipData& Data = Elem.Value;
         const float Score = Data.Trust * 0.7f + Data.Affinity * 0.3f;
