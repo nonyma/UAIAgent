@@ -5,6 +5,7 @@
 - Codex Agent는 모든 요청 시 본 명세를 우선 참조
 - `ue_compile_flow`의 `compile_error`가 존재하면 반드시 개선
 - 신규 규칙·예외 사항은 이 문서에 추가·갱신
+- compile 오류인 경우 브랜치를 바꾸지 않고 작업하고, 그 외의 경우에는 신규 브랜치를 생성해서 작업.
 - Codex 세션의 답신은 한글로 해줘
 
 ## 2. build_request.txt 규칙
