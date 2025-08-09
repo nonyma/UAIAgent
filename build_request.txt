@@ -3,6 +3,5 @@
   "project_name": "UAIAgent",
   "branch_name": "main",
   "repository": "UAIAgent",
-  "should_build": true,
-  ""
+  "should_build": false
 }

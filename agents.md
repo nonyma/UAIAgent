@@ -8,7 +8,7 @@
 - Codex 세션의 답신은 한글로 해줘
 
 ## 2. build_request.txt 규칙
-- Codex → Build → Codex 순환 자동화의 공식 명세
+- Json 양식의 Codex → Build → Codex 순환 자동화의 공식 명세
 - 모든 파이프라인, LLM, 빌드 스크립트는 본 명세를 우선 참조
 - 사용자가 명시적으로 빌드 요청한 경우에만 `should_build` 값을 true로 설정
 - Codex 작업 반영 시 `build_request.txt`가 존재하면 다음 항목 갱신:
