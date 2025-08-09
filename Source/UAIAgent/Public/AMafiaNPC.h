@@ -13,7 +13,7 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Mafia")
     FString MyRole;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Mafia")
-    TMap<TWeakObjectPtr<AINPC>, FString> PredictedRoleMap;
+    TMap<AINPC*, FString> PredictedRoleMap;
     UFUNCTION(BlueprintCallable, Category = "Mafia")
     virtual AINPC* PickBluffTarget();
     UFUNCTION(BlueprintCallable, Category = "Mafia")
