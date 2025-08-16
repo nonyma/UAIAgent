@@ -1,7 +1,8 @@
 {
   "project_path": "C:\\WorkSpace\\UAIAgent",
   "project_name": "UAIAgent",
-  "branch_name": "main",
+  "branch_name": "work",
   "repository": "UAIAgent",
-  "should_build": false
+  "should_build": false,
+  "user": "codex_shell"
 }
